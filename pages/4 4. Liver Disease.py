@@ -8,17 +8,17 @@ import streamlit as st
 
 #path
 main_file_path=os.path.realpath(__file__)
-file_path = os.path.join(os.path.dirname(main_file_path), "./pickle_models/diabetes_logistic.pkl")
+file_path = os.path.join(os.path.dirname(main_file_path), "./pickle_models/liver_lr.pkl")
 
 # loaded model
-diabetes_logistic_loaded_model = pickle.load(open(file_path,'rb'))
+liver_lr_loaded_model = pickle.load(open(file_path,'rb'))
 
 
 
 
 # Function for predicting
 
-def diabetes_prediction_logistic(input_data):
+def liver_prediction_lr(input_data):
     
     #changing the input data as numpy array
     input_data_as_np_array = np.asarray(input_data)
@@ -26,34 +26,39 @@ def diabetes_prediction_logistic(input_data):
     #reshape the array as we are predicting for one instance
     input_data_reshaped = input_data_as_np_array.reshape(1,-1 )
     
-    prediction = diabetes_logistic_loaded_model.predict(input_data_reshaped)
+    prediction = liver_lr_loaded_model.predict(input_data_reshaped)
     print(prediction)
     
     if(prediction[0]==1):
-        return 'The person might have diabetes'
+        return 'The person might have liver disease'
     else:
-        return 'The The person does not have diabetes'
+        return 'The The person does not have liver disease'
 
 def main():
     
     # giving a title
-    st.title('Diabetes Disease Prediction')
+    st.title('Liver Disease Prediction')
+    st.write('Using Logistic Regression algorithm')
     
     #input data
+    
+    age =  st.number_input('Age')
+    gender = st.number_input('Gender : Enter 1 for Male and 0 for Female')
+    t_bilirubin = st.number_input('Total Bilirubin')
+    d_bilirubin =  st.number_input('Direct Bilirubin')
+    Alkaline_phosphotase =  st.number_input('Alkaline_Phosphotase')
+    Alamine_aminotransferase =  st.number_input('Alamine_Aminotransferase')
+    Aspartate_aminotransferase =  st.number_input('Aspartate_Aminotransferase')
+    Total_protiens =  st.number_input('Total_Protiens')
+    Albumin=  st.number_input('Albumin')
+    Albumin_Globulin_Ratio =  st.number_input('Albumin_and_Globulin_Ratio')
 
-    pregnancies = st.number_input('Pregnancies')
-    Glucose =  st.number_input('Glucose')
-    BloodPressure =  st.number_input('Blood Pressure')
-    SkinThickness =  st.number_input('Skin Thickness')
-    Insulin =  st.number_input('Insulin')
-    BMI =  st.number_input('BMI')
-    DiabetesPedigreeFunction =  st.number_input('Diabetes Pedigree Function')
-    Age =  st.number_input('Age')
+
 
     diagnosis = ''
     
-    if(st.button('Diabetes test result')):
-        diagnosis = diabetes_prediction_logistic([pregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age])
+    if(st.button('Liver disease test result')):
+        diagnosis = liver_prediction_lr([age,gender,t_bilirubin,d_bilirubin,Alkaline_phosphotase,Alamine_aminotransferase,Aspartate_aminotransferase,Total_protiens,Albumin,Albumin_Globulin_Ratio])
         
     st.success(diagnosis)
 

@@ -38,6 +38,7 @@ def main():
     
     # giving a title
     st.title('Kidney Disease Prediction')
+    st.write('Using Random forest algorithm')
     
     #input data
 

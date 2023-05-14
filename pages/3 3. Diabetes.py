@@ -38,6 +38,7 @@ def main():
     
     # giving a title
     st.title('Diabetes Disease Prediction')
+    st.write('Using Support Vector Machine algorithm')
     
     #input data
 
