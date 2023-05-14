@@ -11,7 +11,7 @@ img = Image.open("images/disease.jpg")
 # Header Part
 with st.container():
     st.subheader('B. Tech Final Year Project')
-    st.text('Under supervision of : \nDr Madhuchanda Choudhury, Associate Professor, ECE \nNIT, Silchar')
+    st.text('Under supervision of : \nDr Madhuchanda Choudhury, Associate Professor, ECE \nNIT Silchar')
     st.title("Disease detection using multiple ML models")
     st.sidebar.success("Select a Disease")
     st.write("---")
