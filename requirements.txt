@@ -1,3 +1,5 @@
 numpy==1.21.6
+scikit-learn==1.2.2
+sklearn==0.0.post1
 Pillow==9.5.0
 streamlit==1.20.0
