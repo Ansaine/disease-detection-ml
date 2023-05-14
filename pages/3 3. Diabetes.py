@@ -8,7 +8,7 @@ import streamlit as st
 
 #path
 main_file_path=os.path.realpath(__file__)
-file_path = os.path.join(os.path.dirname(main_file_path), "./pickle_models/diabetes_logistic.pkl")
+file_path = os.path.join(os.path.dirname(main_file_path), "./pickle_models/diabetes_svm.pkl")
 
 # loaded model
 diabetes_logistic_loaded_model = pickle.load(open(file_path,'rb'))
